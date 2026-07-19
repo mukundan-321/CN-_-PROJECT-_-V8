@@ -1,0 +1,55 @@
+name: two_person_app
+description: >
+  A private digital space shared between exactly two people.
+  Pure peer-to-peer, end-to-end encrypted, no servers.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.19.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management.
+  flutter_riverpod: ^2.5.1
+
+  # Dependency injection — manual service locator, no codegen.
+  get_it: ^7.7.0
+
+  # Local encrypted persistence (SQLCipher-backed SQLite via drift).
+  drift: ^2.17.0
+  sqlite3_flutter_libs: ^0.5.24
+  sqlcipher_flutter_libs: ^0.6.4
+  path_provider: ^2.1.3
+  path: ^1.9.0
+
+  # P2P transport.
+  flutter_webrtc: ^0.10.4
+
+  # Crypto primitives.
+  cryptography: ^2.7.0
+
+  # Private key storage — Keychain (iOS) / Keystore (Android) only.
+  # Private key bytes never touch the SQLCipher database.
+  flutter_secure_storage: ^9.2.2
+
+  # QR pairing.
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^5.1.1
+
+  # Utilities
+  equatable: ^2.0.5
+  uuid: ^4.4.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.11
+  drift_dev: ^2.17.0
+
+flutter:
+  uses-material-design: true
