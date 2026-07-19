@@ -27,7 +27,7 @@ dependencies:
   path: ^1.9.0
 
   # P2P transport.
-  flutter_webrtc: ^0.10.4
+  flutter_webrtc: ^1.0.0
 
   # Crypto primitives.
   cryptography: ^2.7.0
