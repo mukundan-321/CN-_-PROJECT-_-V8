@@ -6,37 +6,35 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
-  flutter: '>=3.19.0'
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  # State management.
+  # State management
   flutter_riverpod: ^2.5.1
 
-  # Dependency injection — manual service locator, no codegen.
+  # Dependency injection
   get_it: ^7.7.0
 
-  # Local encrypted persistence (SQLCipher-backed SQLite via drift).
+  # Encrypted database (SQLCipher)
   drift: ^2.17.0
-  sqlite3_flutter_libs: ^0.5.24
   sqlcipher_flutter_libs: ^0.6.4
   path_provider: ^2.1.3
   path: ^1.9.0
 
-  # P2P transport.
+  # WebRTC
   flutter_webrtc: ^1.0.0
 
-  # Crypto primitives.
+  # Cryptography
   cryptography: ^2.7.0
 
-  # Private key storage — Keychain (iOS) / Keystore (Android) only.
-  # Private key bytes never touch the SQLCipher database.
+  # Secure storage
   flutter_secure_storage: ^9.2.2
 
-  # QR pairing.
+  # QR pairing
   qr_flutter: ^4.1.0
   mobile_scanner: ^5.1.1
 
@@ -47,6 +45,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_lints: ^4.0.0
   build_runner: ^2.4.11
   drift_dev: ^2.17.0
