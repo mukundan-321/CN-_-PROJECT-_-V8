@@ -248,32 +248,7 @@ class _ChoosingView extends StatelessWidget {
               ? 'You\'re already paired. Reconnect to start this session.'
               : 'This app connects exactly two people, directly — no accounts, no servers.',
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        const SizedBox(height: 32),
-        if (error != null) ...[
-          Text(error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
-          const SizedBox(height: 16),
-        ],
-        FilledButton(
-          onPressed: busy ? null : onCreate,
-          child: Text(isReconnect ? 'Start session' : 'Start pairing'),
-        ),
-        const SizedBox(height: 12),
-        OutlinedButton(
-          onPressed: busy ? null : onJoin,
-          child: Text(isReconnect ? 'Join their session' : 'Join with an invite'),
-        ),
-        if (busy) const Padding(
-          padding: EdgeInsets.only(top: 24),
-          child: CircularProgressIndicator(),
-        ),
-      ],
-    );
-  }
-}
-
-class _PasteOrScanView extends StatelessWidget {
+          style: class _PasteOrScanView extends StatelessWidget {
   final String title;
   final TextEditingController controller;
   final bool busy;
@@ -308,7 +283,9 @@ class _PasteOrScanView extends StatelessWidget {
         TextField(
           controller: controller,
           maxLines: 4,
-          decoration: const InputDecoration(border: OutlineInputBorder()),
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+          ),
         ),
         const SizedBox(height: 12),
         OutlinedButton(
@@ -317,22 +294,26 @@ class _PasteOrScanView extends StatelessWidget {
         ),
         if (error != null) ...[
           const SizedBox(height: 16),
-          Text(error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
-        ],
-                  if (busy)
-            const Padding(
-              padding: EdgeInsets.only(top: 16),
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
+          Text(
+            error!,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.error,
             ),
+          ),
         ],
-      ),
+        if (busy)
+          const Padding(
+            padding: EdgeInsets.only(top: 16),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+      ],
     );
   }
 }
 
-class _WaitingToConnectView extends StatelessWidget {
+class _ShareAndAwaitView extends StatelessWidget {
   final String instructions;
   final String payload;
   final TextEditingController controller;
@@ -391,7 +372,9 @@ class _WaitingToConnectView extends StatelessWidget {
           const SizedBox(height: 12),
           OutlinedButton.icon(
             onPressed: () {
-              Clipboard.setData(ClipboardData(text: payload));
+              Clipboard.setData(
+                ClipboardData(text: payload),
+              );
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
@@ -449,8 +432,8 @@ class _WaitingToConnectView extends StatelessWidget {
     );
   }
 }
-          
-  class _WaitingToConnectView extends StatelessWidget {
+
+class _WaitingToConnectView extends StatelessWidget {
   const _WaitingToConnectView();
 
   @override
@@ -467,7 +450,6 @@ class _WaitingToConnectView extends StatelessWidget {
     );
   }
 }
-    
 
 class _FingerprintVerifyView extends StatelessWidget {
   final String fingerprint;
