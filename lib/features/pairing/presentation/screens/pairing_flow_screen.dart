@@ -463,18 +463,7 @@ class _ShareAndAwaitView extends StatelessWidget {
     );
   }
 }
-    return const Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircularProgressIndicator(),
-          SizedBox(height: 16),
-          Text('Connecting…'),
-        ],
-      ),
-    );
-  }
-}
+    
 
 class _FingerprintVerifyView extends StatelessWidget {
   final String fingerprint;
