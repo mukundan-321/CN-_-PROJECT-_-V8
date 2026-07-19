@@ -118,12 +118,16 @@ class PairingRepositoryImpl implements PairingRepository {
       );
 
       _pendingOutgoingSessionId = sessionId;
-      _pendingEphemeralKeyPair = ephemeralKeyPair;
-      return Ok(payload.toJson());
-    } catch (e) {
-      return Err(UnknownFailure(e.toString()));
-    }
-  }
+_pendingEphemeralKeyPair = ephemeralKeyPair;
+
+final json = payload.toJson();
+
+print("====================================");
+print("PAYLOAD LENGTH = ${json.length}");
+print(json);
+print("====================================");
+
+return Ok(json);
 
   @override
   Future<Result<String>> acceptInvite(String invitePayload) async {
