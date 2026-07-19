@@ -121,10 +121,10 @@ class WebRtcConnectionManager {
     await pc.setLocalDescription(answer);
     await gatheringDone;
 
-    return SignalingAnswer(
-      sdp: answer.sdp!,
-      candidates: _gatheredCandidates.map(_candidateToJson).toList(),
-    );
+    return SignalingOffer(
+  sdp: offer.sdp!,
+  candidates: const [],
+);
   }
 
   /// Offer side, after receiving the response payload back.
