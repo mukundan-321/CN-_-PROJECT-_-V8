@@ -128,6 +128,10 @@ print(json);
 print("====================================");
 
 return Ok(json);
+    } catch (e) {
+      return Err(UnknownFailure(e.toString()));
+    }
+  }
 
   @override
   Future<Result<String>> acceptInvite(String invitePayload) async {
