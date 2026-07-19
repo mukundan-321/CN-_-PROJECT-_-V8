@@ -248,7 +248,9 @@ class _ChoosingView extends StatelessWidget {
               ? 'You\'re already paired. Reconnect to start this session.'
               : 'This app connects exactly two people, directly — no accounts, no servers.',
           textAlign: TextAlign.center,
-          style: class _PasteOrScanView extends StatelessWidget {
+          style: Theme.of(context).textTheme.bodyLarge,
+),
+const SizedBox(height: 32),
   final String title;
   final TextEditingController controller;
   final bool busy;
