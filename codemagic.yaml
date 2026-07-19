@@ -1,11 +1,14 @@
 workflows:
   android-workflow:
     name: Android Build
+
     environment:
       flutter: stable
+
     scripts:
       - flutter pub get
+      - dart run build_runner build --delete-conflicting-outputs
       - flutter build apk --release
+
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
-
