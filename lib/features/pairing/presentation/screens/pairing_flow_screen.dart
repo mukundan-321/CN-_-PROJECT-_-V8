@@ -446,10 +446,23 @@ class _ShareAndAwaitView extends StatelessWidget {
   }
 }
           
+  class _WaitingToConnectView extends StatelessWidget {
   const _WaitingToConnectView();
 
   @override
   Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(),
+          SizedBox(height: 16),
+          Text('Connecting…'),
+        ],
+      ),
+    );
+  }
+}
     return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
