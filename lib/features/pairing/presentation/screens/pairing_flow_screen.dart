@@ -377,7 +377,7 @@ class _ShareAndAwaitView extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   QrImageView(
-                    data: payload,
+                    data: "hello world",
                     size: 220,
                   ),
                 ],
