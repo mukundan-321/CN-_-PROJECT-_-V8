@@ -319,16 +319,20 @@ class _PasteOrScanView extends StatelessWidget {
           const SizedBox(height: 16),
           Text(error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
         ],
-        if (busy) const Padding(
-          padding: EdgeInsets.only(top: 16),
-          child: Center(child: CircularProgressIndicator()),
-        ),
-      ],
+                  if (busy)
+            const Padding(
+              padding: EdgeInsets.only(top: 16),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
 
-class _ShareAndAwaitView extends StatelessWidget {
+class _WaitingToConnectView extends StatelessWidget {
   final String instructions;
   final String payload;
   final TextEditingController controller;
