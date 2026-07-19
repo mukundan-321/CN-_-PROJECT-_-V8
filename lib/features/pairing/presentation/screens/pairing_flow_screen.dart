@@ -352,37 +352,99 @@ class _ShareAndAwaitView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        Center(
-  child: Container(
-    padding: const EdgeInsets.all(16),
-    color: Colors.white,
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Text(
-          "DEBUG PAYLOAD",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+        children: [
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              color: Colors.white,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'DEBUG PAYLOAD',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SelectableText(
+                    payload,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 8,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  QrImageView(
+                    data: payload,
+                    size: 220,
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        SelectableText(
-          payload,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 8,
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: payload));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Copied — share it via any app you like.',
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(Icons.copy),
+            label: const Text('Copy invite text'),
           ),
-        ),
-        const SizedBox(height: 16),
-        QrImageView(
-          data: payload,
-          size: 220,
-        ),
-      ],
-    ),
-  ),
-),
+          const SizedBox(height: 24),
+          Text(
+            instructions,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          FilledButton.icon(
+            onPressed: busy ? null : onScanReply,
+            icon: const Icon(Icons.qr_code_scanner),
+            label: const Text('Scan their reply'),
+          ),
+          const SizedBox(height: 12),
+          TextField(
+            controller: controller,
+            maxLines: 4,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Or paste their reply text here',
+            ),
+          ),
+          const SizedBox(height: 8),
+          OutlinedButton(
+            onPressed: busy ? null : onSubmitReply,
+            child: const Text('Submit reply'),
+          ),
+          if (error != null) ...[
+            const SizedBox(height: 16),
+            Text(
+              error!,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.error,
+              ),
+            ),
+          ],
+          if (busy)
+            const Padding(
+              padding: EdgeInsets.only(top: 16),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
           const SizedBox(height: 12),
           OutlinedButton.icon(
             onPressed: () {
