@@ -445,54 +445,7 @@ class _ShareAndAwaitView extends StatelessWidget {
     );
   }
 }
-          const SizedBox(height: 12),
-          OutlinedButton.icon(
-            onPressed: () {
-              Clipboard.setData(ClipboardData(text: payload));
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Copied — share it via any app you like.')),
-              );
-            },
-            icon: const Icon(Icons.copy),
-            label: const Text('Copy invite text'),
-          ),
-          const SizedBox(height: 24),
-          Text(instructions, textAlign: TextAlign.center),
-          const SizedBox(height: 16),
-          FilledButton.icon(
-            onPressed: busy ? null : onScanReply,
-            icon: const Icon(Icons.qr_code_scanner),
-            label: const Text('Scan their reply'),
-          ),
-          const SizedBox(height: 12),
-          TextField(
-            controller: controller,
-            maxLines: 4,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Or paste their reply text here',
-            ),
-          ),
-          const SizedBox(height: 8),
-          OutlinedButton(
-            onPressed: busy ? null : onSubmitReply,
-            child: const Text('Submit reply'),
-          ),
-          if (error != null) ...[
-            const SizedBox(height: 16),
-            Text(error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
-          ],
-          if (busy) const Padding(
-            padding: EdgeInsets.only(top: 16),
-            child: Center(child: CircularProgressIndicator()),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _WaitingToConnectView extends StatelessWidget {
+          
   const _WaitingToConnectView();
 
   @override
