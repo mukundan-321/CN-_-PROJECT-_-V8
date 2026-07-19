@@ -352,14 +352,37 @@ class _ShareAndAwaitView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              color: Colors.white,
-              child: QrImageView(data: payload, size: 220),
-            ),
+        Center(
+  child: Container(
+    padding: const EdgeInsets.all(16),
+    color: Colors.white,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Text(
+          "DEBUG PAYLOAD",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+        const SizedBox(height: 8),
+        SelectableText(
+          payload,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 8,
+          ),
+        ),
+        const SizedBox(height: 16),
+        QrImageView(
+          data: payload,
+          size: 220,
+        ),
+      ],
+    ),
+  ),
+),
           const SizedBox(height: 12),
           OutlinedButton.icon(
             onPressed: () {
