@@ -96,15 +96,6 @@ class _RootGateState extends State<_RootGate> {
   late final Future<bool> _isPairedFuture = sl<PairingRepository>().isPaired;
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
-      future: _isPairedFuture,
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const Scaffold(body: Center(child: CircularProgressIndicator()));
-        }
-        return PairingFlowScreen(isReconnect: snapshot.data!);
-      },
-    );
-  }
+Widget build(BuildContext context) {
+  return const PairingFlowScreen(isReconnect: false);
 }
